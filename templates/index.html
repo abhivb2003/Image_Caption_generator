@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Caption Generator</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+
+<body>
+    <div class="background">
+        <div class="container">
+            <h1>Image Caption Generator</h1>
+            <form action="/" method="POST" enctype="multipart/form-data">
+                <label for="image" class="upload-label">Choose an Image</label>
+                <input type="file" name="image" id="image" accept="image/*" required>
+                <button type="submit" class="generate-button">Generate Caption</button>
+            </form>
+
+            {% if image %}
+            <div class="result-container">
+                <h2>Generated Caption</h2>
+                <img src="data:image/jpeg;base64,{{ image }}" alt="Generated Image" class="generated-image">
+                <p class="caption-text">"{{ caption }}"</p>
+            </div>
+            {% endif %}
+
+            {% if generation_message %}
+            <p class="generation-message"><i>{{ generation_message }}</i></p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+
+</html>
+
